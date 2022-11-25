@@ -7,6 +7,12 @@ inputs:
   bucket:
     description: 'Name of AWS Bucket'
     required: true
+  destination-dir:
+    description: 'Desitnation Directory'
+    required: true
+  version-dir:
+    description: 'Versions directory i-e v[1-999]'
+    required: true
   dist-id:
     description: 'AWS CloudFront distribution ID'
     required: true
