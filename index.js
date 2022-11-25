@@ -3,14 +3,14 @@ import deploy from './deploy';
 
 async function run() {
   try {
-    const folder = getInput('folder');
-    const bucket = getInput('bucket');
-    const destinationDir = getInput('destination-dir');
-    const vsersionDir = getInput('version-dir');
-    const distId = getInput('dist-id');
-    const invalidation = getInput('invalidation');
+    const folder = getInput('SOURCE_DIRECTORY');
+    const bucket = getInput('S3_BUCKET');
+    const destinationDir = getInput('DESTINATION_DIR');
+    const vsersionDir = getInput('VERSION_DIR');
+    const distId = getInput('CLOUDFRONT_DISTRIBUTION_ID');
+    const invalidation = getInput('INVALIDATION');
 
-    await deploy(folder, bucket, distId, invalidation);
+    await deploy(SOURCE_DIRECTORY, S3_BUCKET, CLOUDFRONT_DISTRIBUTION_ID, INVALIDATION);
   }
   catch (error) {
     setFailed(error.message);

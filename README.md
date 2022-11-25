@@ -11,22 +11,22 @@ You can use this action by referencing the v1 branch
 ```yaml
 uses: lbertenasco/s3-deploy@v1
 with:
-    folder: build
-    bucket: ${{ secrets.S3_BUCKET }}
-    dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-    invalidation: / *
+    SOURCE_DIRECTORY: build
+    S3_BUCKET: ${{ secrets.S3_BUCKET }}
+    CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+    INVALIDATION: / *
 ```
 
 ## Arguments
 
-S3 Deploy's Action supports four inputs from the user: `folder`, `bucket`, `dist-id` and `invalidation`. These inputs, along with their descriptions and usage contexts, are listed in the table below:
+S3 Deploy's Action supports four inputs from the user: `SOURCE_DIRECTORY`, `S3_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID` and `INVALIDATION`. These inputs, along with their descriptions and usage contexts, are listed in the table below:
 
 | Input  | Description | Usage |
 | :---:     |     :---:   |    :---:   |
-| `folder`  | The folder to upload  | *Required* |
-| `bucket`  | The destination bucket | *Required*
-| `dist-id`  | The CloudFront Distribution ID to invalidate | *Required*
-| `invalidation`  | The CloudFront Distribution path(s) to invalidate | *Required*
+| `SOURCE_DIRECTORY`  | The folder to upload  | *Required* |
+| `S3_BUCKET`  | The destination bucket | *Required*
+| `CLOUDFRONT_DISTRIBUTION_ID`  | The CloudFront Distribution ID to invalidate | *Required*
+| `INVALIDATION`  | The CloudFront Distribution path(s) to invalidate | *Required*
 
 ### Example `workflow.yml` with S3 Deploy Action
 
@@ -52,10 +52,10 @@ jobs:
         - name: Deploy
           uses: lbertenasco/s3-deploy@v1
           with:
-            folder: build
-            bucket: ${{ secrets.S3_BUCKET }}
-            dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-            invalidation: / *
+            SOURCE_DIRECTORY: 'build'
+            S3_BUCKET: ${{ secrets.S3_BUCKET }}
+            CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+            INVALIDATION: / *
 ```
 
 ## License

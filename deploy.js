@@ -1,19 +1,19 @@
 const path = require("path");
 const exec = require("@actions/exec");
 
-let deploy = function (folder, bucket, distId, invalidation) {
+let deploy = function (SOURCE_DIRECTORY, S3_BUCKET, CLOUDFRONT_DISTRIBUTION_ID, INVALIDATION) {
   return new Promise((resolve, reject) => {
     try {
       const command = `npx s3-deploy@1.4.0 ./** \
-                        --bucket ${bucket} \
+                        --bucket ${S3_BUCKET} \
                         --cwd . \
-                        --distId ${distId} \
+                        --distId ${CLOUDFRONT_DISTRIBUTION_ID} \
                         --etag \
                         --gzip xml,html,htm,js,css,ttf,otf,svg,txt \
-                        --invalidate "${invalidation}" \
+                        --invalidate "${INVALIDATION}" \
                         --noCache `;
 
-      const cwd = path.resolve(folder);
+      const cwd = path.resolve(SOURCE_DIRECTORY);
       exec.exec(command, [], { cwd }).then(resolve).catch(reject);
     } catch (e) {
       reject(e);

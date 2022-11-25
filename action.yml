@@ -1,22 +1,22 @@
 name: 'S3 and CloudFront Deploy'
 description: 'Deploy a static website to AWS S3 and invalidate CloudFront distribution path(s)'
 inputs:
-  folder:
-    description: 'Directory to deploy'
+  SOURCE_DIRECTORY:
+    description: 'Source Directory to deploy'
     required: true
-  bucket:
+  S3_BUCKET:
     description: 'Name of AWS Bucket'
     required: true
-  destination-dir:
+  DESTINATION_DIR:
     description: 'Desitnation Directory'
     required: true
-  version-dir:
+  VERSION_DIR:
     description: 'Versions directory i-e v[1-999]'
     required: true
-  dist-id:
+  CLOUDFRONT_DISTRIBUTION_ID:
     description: 'AWS CloudFront distribution ID'
     required: true
-  invalidation:
+  INVALIDATION:
     description: 'AWS CloudFront invalidation path(s)'
     required: true
 runs:
